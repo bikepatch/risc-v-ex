@@ -19,6 +19,11 @@ sine:
 	# implement here
 
 	la	a7, var
+
+	mv	a6, ra
+	mv	a3, a1
+	mv	a4, a2
+	call 	iffo
 	
 	li	a3, default_answer
 	sw	a3, 0(a2)
@@ -26,3 +31,12 @@ sine:
 
 	ret
 	
+
+# If function
+iffo:
+	li	a5, 1
+	beq	a3, a5, a4
+	
+
+#Copy from to
+somecopy:
