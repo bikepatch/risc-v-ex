@@ -35,7 +35,7 @@ sine:
 # If function
 iffo:
 	li	a5, 1
-	beq	a3, a5, a4
+	#beq	a3, a5, a4
 	
 
 #Copy from to

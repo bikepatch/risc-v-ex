@@ -31,7 +31,7 @@ _start:
 
 	la	a1, input
 	la	a2, output
-	call 	sine
+	#call 	sine
 
 	# Result checking will be here
 
