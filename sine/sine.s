@@ -1,42 +1,36 @@
 .globl sine
 
-default_answer = 0x312d
-
 .section .data
 # if you need some data, put it here
 var:
 .align 8
-.space 100
 
 
 .section .text
 
-# Sine
+# Sine for 40%, if greater than 1 then we return 1, if not, then we return what we've got
 #   Params
 #	a1 -- input buffer will contain string with the argument
 #	a2 -- output string buffer for the string result
 sine:
 	# implement here
-
-	la	a7, var
-
+	
+	#load number
+	ld	a3, 0(a1)
+	#load first bit of number
+	lb	a4, 0(a1)
+	#load number to check equality
+	li	a5, '1'
 	mv	a6, ra
-	mv	a3, a1
-	mv	a4, a2
-	call 	iffo
-	
-	li	a3, default_answer
-	sw	a3, 0(a2)
-	sw	a3, 0(a7)
-
+	call	iffo
+stamp:
+	mv	ra, a6
+	sd	a5, 0(a2)
 	ret
-	
 
-# If function
+# Function for if
 iffo:
-	li	a5, 1
-	#beq	a3, a5, a4
-	
+	beq	a4, a5, stamp
+	ld	a5, (a1)
+	ret
 
-#Copy from to
-somecopy:

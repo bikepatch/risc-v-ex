@@ -7,7 +7,9 @@ write	= 64
 .section .data 
 
 # This is  0-ended string with input data
-input: 	.asciz "0.234"
+input:
+.align 4
+.space 100
 
 # This will be used for 0-ended string with result. Use "-1" if you cannot calculate the function
 output:                
@@ -31,7 +33,7 @@ _start:
 
 	la	a1, input
 	la	a2, output
-	#call 	sine
+	call 	sine
 
 	# Result checking will be here
 
